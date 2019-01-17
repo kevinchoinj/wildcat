@@ -11,7 +11,7 @@ const renderField = ({
     <input {...input}
       placeholder={placeholder}
       type={type}
-      className="user_form_field"
+      className="admin_form__field"
     />
     {touched &&
       ((error && <span className="form_error">{error}</span>) ||
@@ -23,21 +23,15 @@ const LoginForm = props => {
   const { handleSubmit, error } = props;
   return (
     <form onSubmit={handleSubmit}>
-      <div className="spacing_bottom__large">
-        <div className="admin_label">
-          Email Address
-        </div>
+      <div className="spacing_bottom">
         <Field
           name="email"
-          placeholder="name@example.com"
+          placeholder="Username"
           type="text"
           component={renderField}
         />
       </div>
-      <div className="spacing_bottom__large">
-        <div className="admin_label">
-          Password
-        </div>
+      <div className="spacing_bottom">
         <Field
           name="password"
           placeholder="Password"
@@ -49,7 +43,7 @@ const LoginForm = props => {
       <div className="user_row">
         <button
           type="submit"
-          className="admin_button_large"
+          className="admin_form__button"
         >
           Log In
         </button>

@@ -13,6 +13,9 @@ body * {
   --white-color: #fff;
   --black-color: #000;
   --grey-dark-color: rgba(24,24,24,1);
+  --white-color: #fff;
+  --grey-light-color: #babcc4;
+  --admin-container-color: rgba(0, 0, 0, .8);
 }
 
 .left_offset {
@@ -82,9 +85,6 @@ body * {
 	position: absolute;
 	background-color: #fff;
 	z-index: 11;
-	-webkit-transition: .2s ease-out;
-	-moz-transition: .2s ease-out;
-	-o-transition: .2s ease-out;
 	transition:.2s ease-out;
 	-webkit-transform: rotate(45deg);
 	-moz-transform: rotate(45deg);
@@ -98,9 +98,6 @@ body * {
 	position: absolute;
 	background-color: #fff;
 	z-index: 11;
-	-webkit-transition: .2s ease-out;
-	-moz-transition: .2s ease-out;
-	-o-transition: .2s ease-out;
 	transition:.2s ease-out;
 	-webkit-transform: rotate(-45deg);
 	-moz-transform: rotate(-45deg);
@@ -173,4 +170,8 @@ body * {
 .scrollbar-thumb.scrollbar-thumb-x,
 .scrollbar-track.scrollbar-track-x{
   display: none !important;
+}
+
+.spacing_bottom {
+  margin-bottom: 16px;
 }

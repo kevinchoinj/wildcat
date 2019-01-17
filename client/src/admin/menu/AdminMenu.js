@@ -1,6 +1,8 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import {Link} from 'react-router-dom';
+import * as authActions from 'actions/authentication';
 import logo from 'images/logo.png';
 import Scrollbar from 'smooth-scrollbar';
 
@@ -10,6 +12,9 @@ class Admin extends React.Component {
       alwaysShowTracks: true,
       syncCallbacks: true,
     });
+  }
+  signOut = () => {
+    this.props.authActions.signOutUser();
   }
   render(){
     const menuValues = [
@@ -34,6 +39,9 @@ class Admin extends React.Component {
               </Link>
             </div>
           ))}
+          <div className="admin_menu_link" onClick={this.signOut}>
+            Sign Out
+          </div>
         </div>
       </div>
     );
@@ -46,5 +54,6 @@ export default connect(
     email: state.authentication.email,
   }),
   dispatch => ({
+    authActions: bindActionCreators(authActions, dispatch),
   }),
 )(Admin);
