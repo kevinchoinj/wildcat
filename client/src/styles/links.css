@@ -23,7 +23,7 @@
   transition-timing-function: ease-out;
   top: -100vh;
   transform: translateY(0px);
-  animation-fill-mode: forwards;
+  animation-fill-mode: both;
 }
 .columnbg_column--hide {
   animation-name: verticalHide ;
