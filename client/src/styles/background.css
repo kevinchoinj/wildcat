@@ -23,9 +23,6 @@
     left: 0px;
     background-color: var(--black-color);
     opacity: 0;
-    -webkit-transition: .4s ease-out;
-    -moz-transition: .4s ease-out;
-    -o-transition: .4s ease-out;
     transition: .4s ease-out;
   }
   .mobile_background--display {

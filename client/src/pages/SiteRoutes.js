@@ -18,6 +18,8 @@ import Gallerypage from 'pages/Gallery';
 import Contact from 'pages/Contact';
 import Links from 'pages/Links';
 import Split from 'pages-sessions/Split';
+import SessionsButtons from 'components/pages-sessions/SessionsButtons';
+
 import MessageSuccess from 'pages/MessageSuccess';
 import MessageFailure from 'pages/MessageFailure';
 
@@ -88,8 +90,12 @@ class SiteRoutes extends React.Component {
         <Menu/>
 
         <LinksSplit/>
-        <Split/>
         <MobileBackground/>
+
+        {loadedContent[pageData.sessionsOneLink] ||
+          loadedContent[pageData.sessionsTwoLink] ||
+          loadedContent[pageData.sessionsThreeLink] ?
+          <SessionsButtons />:null}
 
         {loadedContent[pageData.kittensLink]?
           <CustomsPreview />:null}

@@ -9,10 +9,11 @@ body * {
   box-sizing: border-box;
 }
 :root {
-  --gold-color: #af9759;
+  --gold-color: #e8ba72;
   --white-color: #fff;
   --black-color: #000;
-  --grey-dark-color: rgba(24,24,24,1);
+  /*--grey-dark-color: rgba(24,24,24,1);*/
+  --grey-dark-color: #0f0f0f;
   --white-color: #fff;
   --grey-light-color: #babcc4;
   --admin-container-color: rgba(0, 0, 0, .8);
@@ -36,9 +37,6 @@ body * {
   width: auto;
   height: auto;
   z-index: -100;
-  -ms-transform: translateX(-50%) translateY(-50%);
-  -moz-transform: translateX(-50%) translateY(-50%);
-  -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
   background-size: cover;
 }
@@ -83,12 +81,9 @@ body * {
 	width: 32px;
 	margin-top:20px;
 	position: absolute;
-	background-color: #fff;
+	background-color: var(--white-color);
 	z-index: 11;
 	transition:.2s ease-out;
-	-webkit-transform: rotate(45deg);
-	-moz-transform: rotate(45deg);
-	-o-transform: rotate(45deg);
 	transform: rotate(45deg);
 }
 .panel_close__line_two {
@@ -96,17 +91,14 @@ body * {
 	width: 32px;
 	margin-top: 20px;
 	position: absolute;
-	background-color: #fff;
+	background-color: var(--white-color);
 	z-index: 11;
 	transition:.2s ease-out;
-	-webkit-transform: rotate(-45deg);
-	-moz-transform: rotate(-45deg);
-	-o-transform: rotate(-45deg);
 	transform: rotate(-45deg);
 }
 .panel_close:hover .panel_close__line_one,
 .panel_close:hover .panel_close__line_two {
-  background-color: #af9759;
+  background-color: var(--gold-color);
 }
 @media screen and (max-width: 767px) {
   .panel_close {
@@ -125,7 +117,6 @@ body * {
   }
 }
 
-
 .home_overlay {
   width: 35vw;
   height: calc(100% - 75px);
@@ -133,8 +124,6 @@ body * {
   right: -35vw;
   top: 75px;
   padding: 0px 24px;
-  -webkit-transition: .3s ease-out;
-  -o-transition: .3s ease-out;
   transition: .3s ease-out;
   display: table;
   background-color: rgba(0,0,0,.95);
@@ -148,7 +137,7 @@ body * {
   margin-top: 36px;
   font-size: 18px;
   font-weight: 400;
-  color: #af9759;
+  color: var(--gold-color);
   line-height: 24px;
   width: calc(100% - 48px);
   position: absolute;

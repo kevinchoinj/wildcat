@@ -28,9 +28,6 @@
   color: var(--gold-color);
   font-weight: 600;
   align-items: center;
-  -webkit-transition: .3s ease-out;
-  -moz-transition: .3s ease-out;
-  -o-transition: .3s ease-out;
   transition: .3s ease-out;
 }
 .about_title:after,

@@ -78,10 +78,11 @@
   border-right: 1px solid rgba(175,151,89,.16);
 }
 .sessions_column_quadrant {
-  height: 50%;
-  width: 50%;
+  height: 100%;
+  width: 33.333333333333%;
   position: relative;
   overflow: hidden;
+  border-bottom: 1px solid var(--gold-color);
 }
 .sessions_column_image {
   width: calc(100% + 28px);
@@ -101,7 +102,7 @@
   height: 100%;
   width: 100%;
   position: absolute;
-  background-color: #000;
+  background-color: rgba(0,0,0,.9);
   top: 0px;
   left: 0px;
   animation: thirtyTwoOverlayClose .4s;
@@ -163,9 +164,9 @@
   pointer-events: auto;
 }
 .sessions_text_inner {
-  width: 50%;
+  width: 100%;
   pointer-events: auto;
-  padding: 24px 0px 24px 16.6666666666666%;
+  padding: 24px 50% 24px 16.6666666666666%;
   transition: .4s ease-out;
   opacity: 1;
 }
@@ -179,7 +180,6 @@
   .split_container {
     transition: .8s ease-out;
   }
-
   .split_container .sessions_column {
     display: none;
   }
@@ -226,3 +226,23 @@
   }
 }
 
+
+.sessions_buttons__wrapper {
+  position: fixed;
+  top: 75px;
+  right: 9px;
+  opacity: 1;
+  width: calc(50% - 9px);
+  height: calc(50vh - 37.5px);
+  z-index: 5;
+  transition: .4s ease-out;
+  display: flex;
+}
+.sessions_buttons__wrapper--transition {
+  opacity: 0;
+}
+@media screen and (max-width: 992px) {
+  .sessions_buttons__wrapper {
+    display: none;
+  }
+}

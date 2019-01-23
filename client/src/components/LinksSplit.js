@@ -14,30 +14,8 @@ class LinksSplit extends React.Component{
 
     const columnName = classNames({
       'columnbg_column': true,
-      'columnbg_column--display':
-      (
-        loadedContent[pageData.linksLink] ||
-        loadedContent[pageData.contactLink] ||
-        loadedContent[pageData.kittensLink] ||
-        loadedContent[pageData.galleryLink] ||
-        loadedContent[pageData.messageSuccess] ||
-        loadedContent[pageData.messageFailure]
-      )
-      &&
-      (transitionStatus === 'reset'),
-      'columnbg_column--hide':
-      (
-        (
-          loadedContent[pageData.linksLink] ||
-          loadedContent[pageData.contactLink] ||
-          loadedContent[pageData.kittensLink] ||
-          loadedContent[pageData.galleryLink] ||
-          loadedContent[pageData.messageSuccess] ||
-          loadedContent[pageData.messageFailure]
-        )
-        &&
-        transitionStatus === 'start'
-      )
+      'columnbg_column--display': !loadedContent[pageData.homeLink] && transitionStatus === 'reset',
+      'columnbg_column--hide': !loadedContent[pageData.homeLink] && transitionStatus === 'start',
     });
 
     return(

@@ -185,7 +185,7 @@
 }
 .menu_bar__link {
   line-height: 75px;
-  color: #af9759;
+  color: var(--gold-color);
   text-decoration: none;
   -webkit-transition: .2s ease-out;
   -moz-transition: .2s ease-out;
