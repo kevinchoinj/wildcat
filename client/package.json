@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "classnames": "^2.2.6",
-    "connected-react-router": "^6.0.0",
+    "connected-react-router": "^6.2.1",
     "firebase": "^5.1.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
@@ -19,6 +19,7 @@
     "redux-form": "^8.0.4",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
+    "reselect": "^4.0.0",
     "smooth-scrollbar": "^8.3.0",
     "social-logos": "^2.0.0",
     "webpack": "4.19.1"

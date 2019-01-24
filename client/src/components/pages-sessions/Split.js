@@ -18,26 +18,29 @@ class Split extends React.Component{
       transitionStatus,
     } = this.props;
 
-    const columnName = classNames({
-      'sessions_column': true,
-      'sessions_column--display':
-      (
+    const containerName = classNames({
+      'split_container': true,
+      'split_container--displayed':
         loadedContent[pageData.sessionsOneLink] ||
         loadedContent[pageData.sessionsTwoLink] ||
         loadedContent[pageData.sessionsThreeLink]
-      )
-      &&
-      (transitionStatus === 'reset'),
+    });
+    const columnName = classNames({
+      'sessions_column': true,
       'sessions_column--hide':
-      (
         (
           loadedContent[pageData.sessionsOneLink] ||
           loadedContent[pageData.sessionsTwoLink] ||
           loadedContent[pageData.sessionsThreeLink]
-        )
-        &&
-        transitionStatus === 'start'
-      )
+        ) &&
+        (transitionStatus !== 'reset'),
+        	'sessions_column--displayed':
+        (
+          loadedContent[pageData.sessionsOneLink] ||
+          loadedContent[pageData.sessionsTwoLink] ||
+          loadedContent[pageData.sessionsThreeLink]
+        ) &&
+        (transitionStatus === 'reset'),
     });
 
     const activeOneName = classNames({
@@ -53,7 +56,7 @@ class Split extends React.Component{
       'sessions_column_quadrant--active':loadedContent[pageData.sessionsThreeLink]
     });
     return(
-      <div className="split_container">
+      <div className={containerName}>
         <div className={columnName}>
           <div className="sessions_column_quadrant"/>
           <div className="sessions_column_quadrant"/>

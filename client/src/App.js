@@ -12,7 +12,7 @@ import 'styles/about.css';
 import 'styles/background.css';
 import 'styles/contact.css';
 
-import SiteRoutes from 'pages/SiteRoutes';
+import SiteRoutes from 'pages/SiteRoutesWrapper';
 import AdminCheckLogin from 'admin/pages/AdminCheckLogin';
 import SiteIcon from 'services/SiteIcon';
 
@@ -24,7 +24,7 @@ export default class App extends React.Component {
         <SiteIcon/>
         <Switch>
           <Route path="/shodyra/admin" component={AdminCheckLogin}/>
-          <Route path="/" component={SiteRoutes}/>
+          <Route path="/" render={(props)=> <SiteRoutes {...props} />}/>
         </Switch>
       </div>
     );

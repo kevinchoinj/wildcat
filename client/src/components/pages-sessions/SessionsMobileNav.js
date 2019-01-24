@@ -39,7 +39,7 @@ class Split extends React.Component{
 }
 
 export default connect(
-  (state) => ({
+  (state, ownProps) => ({
     loadedContent: state.transition.loadedContent,
   }),
   dispatch => ({
