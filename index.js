@@ -10,6 +10,7 @@ const app = express();
 
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));
+app.use('/static', express.static('public'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
@@ -72,7 +73,7 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname+'/client/build/index.html'));
 });
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 1600;
 app.listen(port);
 
 console.log(`Server test ${port} started`);

@@ -4,9 +4,6 @@ import classNames from 'classnames';
 import {Link} from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import * as scrollActions from 'actions/scroll';
-import image1 from 'images/7.jpg';
-import image2 from 'images/2.jpg';
-import image3 from 'images/6.jpg';
 
 import {pageData} from 'data/pageData';
 
@@ -67,7 +64,7 @@ class Split extends React.Component{
           <div className="sessions_column_quadrant"/>
           <div className={activeOneName}>
             <Link to="/sessions">
-              <img src={image1} alt="ashley wildcat" className="sessions_column_image"/>
+              <img src='/static/images/7.jpg' alt="ashley wildcat" className="sessions_column_image"/>
               <div className="sessions_column_overlay"/>
               <div className="sessions_column_overlay__text">
                 Stats
@@ -80,7 +77,7 @@ class Split extends React.Component{
         <div className={columnName}>
           <div className={activeTwoName}>
             <Link to="/sessions/2">
-              <img src={image2} alt="ashley wildcat" className="sessions_column_image"/>
+              <img src='/static/images/2.jpg' alt="ashley wildcat" className="sessions_column_image"/>
               <div className="sessions_column_overlay"/>
               <div className="sessions_column_overlay__text">
                 Style
@@ -89,7 +86,7 @@ class Split extends React.Component{
           </div>
           <div className={activeThreeName}>
             <Link to="/sessions/3">
-              <img src={image3} alt="ashley wildcat" className="sessions_column_image"/>
+              <img src='/static/images/6.jpg' alt="ashley wildcat" className="sessions_column_image"/>
               <div className="sessions_column_overlay"/>
               <div className="sessions_column_overlay__text">
                 Sessions

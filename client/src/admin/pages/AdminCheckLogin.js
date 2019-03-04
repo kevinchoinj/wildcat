@@ -7,7 +7,6 @@ import * as authActions from 'actions/authentication';
 import * as imagesActions from 'actions/images';
 import AdminRoutes from 'admin/pages/AdminRoutes';
 import {Link} from 'react-router-dom';
-import backgroundImage from 'images/adminbg.jpg';
 
 let json = require('config.json');
 let emailAddress= json.emailAddress;
@@ -50,7 +49,7 @@ class CheckLogin extends Component {
     }=this.props;
 
     const backgroundStyle = {
-      backgroundImage: 'url('+backgroundImage+')',
+      backgroundImage: 'url(/static/images/adminbg.jpg)',
       backgroundSize: 'cover',
       width: '100vw',
       height: '100vh',

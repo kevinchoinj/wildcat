@@ -48,7 +48,7 @@
 .contact_title__wrapper:before {
   content: '';
   background: var(--gold-color);
-  height: 3px;
+  height: 1px;
   margin: 6px;
 }
 .contact_title__wrapper:before {

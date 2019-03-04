@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {Link} from 'react-router-dom';
 import * as authActions from 'actions/authentication';
-import logo from 'images/logo.png';
 import Scrollbar from 'smooth-scrollbar';
 
 class Admin extends React.Component {
@@ -27,7 +26,7 @@ class Admin extends React.Component {
 
     return (
       <div className="admin_menu_wrapper">
-        <img src={logo} alt="logo" className="admin_logo"/>
+        <img src='/static/images/logo.png' alt="logo" className="admin_logo"/>
         <div className="admin_menu_container" id="admin_menu">
           {menuValues.map((value, index)=>(
             <div key={index}>
