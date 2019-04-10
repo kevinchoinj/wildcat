@@ -48,11 +48,15 @@ var smtpTransport = nodemailer.createTransport({
 });
 
 
-app.post('/send', (req, res)=>{
+app.post('/api/v1/contact', (req, res)=>{
   var mailOptions={
 		to : json.emailRecipient,
-		subject : req.body.name + " <" + req.body.email + ">",
-		text : "Email is from: "+ req.body.email + "\nName: "+req.body.name+"\nSubject: " + req.body.subject + "\nMessage: " + req.body.message,
+		subject : `${req.body.name} <${req.body.email}>`,
+    text :
+      `Email is from: ${req.body.email}
+      Name: ${req.body.name}
+      Subject: ${req.body.subject}
+      Message: ${req.body.message}`,
 	}
 	smtpTransport.sendMail(mailOptions, function(error, response){
    	if(error){

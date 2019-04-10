@@ -18,7 +18,7 @@ class Contact extends React.Component {
   }
 
   submitForm = values => {
-    return this.props.contactActions.postContact(values, '/send');
+    return this.props.contactActions.postContact(values, '/api/v1/contact');
   }
 
   render(){
