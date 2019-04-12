@@ -1,20 +1,9 @@
-import React from 'react';
-import Gallerycomp from 'gallery/Gallery';
-import { bindActionCreators } from 'redux';
+import React, {Suspense} from 'react';
 import { connect } from 'react-redux';
-import * as pagesActions from 'actions/pages';
-import * as scrollActions from 'actions/scroll';
 import classNames from 'classnames';
-import Scrollbar from 'smooth-scrollbar';
+const GalleryWrapper = React.lazy(() => import('../gallery/GalleryWrapper'));
 
 class Gallery extends React.Component {
-  componentDidMount() {
-
-    Scrollbar.init(document.querySelector('#scroll_gallery'), {
-      alwaysShowTracks: true,
-      syncCallbacks: true,
-    });
-  }
   render(){
     const {
       transitionStatus
@@ -26,9 +15,9 @@ class Gallery extends React.Component {
     });
     return(
       <div className={wrapperName}>
-        <div id="scroll_gallery" className="gallery_container">
-          <Gallerycomp/>
-        </div>
+        <Suspense fallback={<div>Loading...</div>}>
+          <GalleryWrapper/>
+        </Suspense>
       </div>
     );
   }
@@ -39,7 +28,5 @@ export default connect(
     transitionStatus: state.transition.transitionStatus,
   }),
   (dispatch) => ({
-    pagesActions: bindActionCreators(pagesActions, dispatch),
-    scrollActions: bindActionCreators(scrollActions, dispatch),
   }),
 )(Gallery);
