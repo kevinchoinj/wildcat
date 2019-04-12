@@ -2,13 +2,14 @@ var express = require("express");
 var proxy = require("express-http-proxy");
 
 const path = require('path');
-
+const compression = require('compression');
 var bodyParser = require('body-parser');
 var nodemailer = require('nodemailer');
 var json = require('./config.json');
 const app = express();
 
 // Serve static files from the React app
+app.use(compression());
 app.use(express.static(path.join(__dirname, 'client/build')));
 app.use('/static', express.static('public'));
 
