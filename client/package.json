@@ -4,8 +4,8 @@
   "private": true,
   "dependencies": {
     "classnames": "^2.2.6",
-    "connected-react-router": "^6.3.2",
-    "firebase": "^5.9.4",
+    "connected-react-router": "^6.4.0",
+    "firebase": "^5.11.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-dropzone": "^4.3.0",
@@ -21,7 +21,7 @@
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
     "smooth-scrollbar": "^8.3.1",
-    "social-logos": "^2.0.0"
+    "social-logos": "^2.1.0"
   },
   "proxy": "http://localhost:1600",
   "scripts": {

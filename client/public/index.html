@@ -19,31 +19,61 @@
 
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
 
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="preload" href="/fonts/roboto.woff2" as="font" crossorigin>
+    <link rel="preload" href="/fonts/lato400.woff2" as="font" crossorigin>
+    <link rel="preload" href="/fonts/lato700.woff2" as="font" crossorigin>
+
+    <style>
+      @font-face {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-display: fallback;
+        font-weight: 400;
+        src: local('Roboto'), local('Roboto-Regular'), url(/fonts/roboto.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      @font-face {
+        font-family: 'Lato';
+        font-style: normal;
+        font-display: fallback;
+        font-weight: 400;
+        src: local('Lato Regular'), local('Lato-Regular'), url(/fonts/lato400.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      @font-face {
+        font-family: 'Lato';
+        font-style: normal;
+        font-display: fallback;
+        font-weight: 700;
+        src: local('Lato Bold'), local('Lato-Bold'), url(/fonts/lato700.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+    </style>
 
     <title>Ashley Wildcat</title>
   </head>
   <body >
     <noscript>
-      <h1>Ashley Wildcat</h1>
-      <div>Ashley Wildcat, model, session wrestling, session, wrestling, Female wrestler,
-        custom wrestling, female wrestling, fantasy wrestling</div>
-      <div>
-        Hi everyone. I am Ashley Wildcat ?? This is more than just work for me. This is an addiction of mine. With that being said.. If you are creepy or even ask for anything sexual/sensual I will not even respond. I have a $100 minimum for anything (like Skype, phone, email, pics) My rate is $400 hour then $300 for any additional hour (unless you are an original client before I raised my rates-then you are locked in) I give a $50 discount if you allow me to film our match and sell it on my video sites. My PayPal email is ashleywildcat@outlook.com It�s always good to get my attention by sending money since I have very expensive taste ?? Let�s have some fun and hope to see you on the mats ???????
-        Ps. My average sponsor me to your city rate is 1k for the states and 3k oversees.
 
-        PSS. I prefer to wear sports bra and booty shorts and you wear sports shorts and a t-shirt.
+        <h1>Ashley Wildcat</h1>
+        <div>Ashley Wildcat, model, session wrestling, session, wrestling, Female wrestler,
+          custom wrestling, female wrestling, fantasy wrestling</div>
+        <div>
+          Hi everyone. I am Ashley Wildcat ?? This is more than just work for me. This is an addiction of mine. With that being said.. If you are creepy or even ask for anything sexual/sensual I will not even respond. I have a $100 minimum for anything (like Skype, phone, email, pics) My rate is $400 hour then $300 for any additional hour (unless you are an original client before I raised my rates-then you are locked in) I give a $50 discount if you allow me to film our match and sell it on my video sites. My PayPal email is ashleywildcat@outlook.com It�s always good to get my attention by sending money since I have very expensive taste ?? Let�s have some fun and hope to see you on the mats ???????
+          Ps. My average sponsor me to your city rate is 1k for the states and 3k oversees.
 
-        There are exceptions to every rule but please don�t come to me with anything crazy ?? I am a wrestler, the All American girl, The girl next door with a twist and not a fucking hooker so leave that sexual shit for them.
+          PSS. I prefer to wear sports bra and booty shorts and you wear sports shorts and a t-shirt.
 
-        Love you And appreciate you. My fans are my world.
+          There are exceptions to every rule but please don�t come to me with anything crazy ?? I am a wrestler, the All American girl, The girl next door with a twist and not a fucking hooker so leave that sexual shit for them.
 
-        xoxo
-      </div>
-    </noscript>
-    <div id="root"></div>
+          Love you And appreciate you. My fans are my world.
 
+          xoxo
+        </div>
+      </noscript>
+      <main>
+        <div id="root"></div>
+      </main>
   </body>
 </html>
 <!--

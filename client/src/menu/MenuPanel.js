@@ -108,6 +108,7 @@ class MenuPanel extends React.Component{
           href={twitterUrl}
           target='_blank'
           rel='noopener noreferrer'
+          aria-label="twitter"
         >
           <SocialLogo className="menu_social_icon" icon="twitter" size={36}/>
         </a>
@@ -115,11 +116,12 @@ class MenuPanel extends React.Component{
           href={facebookUrl}
           target='_blank'
           rel='noopener noreferrer'
+          aria-label="facebook"
         >
           <SocialLogo className="menu_social_icon" icon="facebook" size={36}/>
         </a>
         <br/>
-        <a href={emailUrl} className="menu_link">
+        <a href={emailUrl} className="menu_link" aria-label="email">
           <div role="contentinfo">
             {EMAIL_ADDRESS}
           </div>
