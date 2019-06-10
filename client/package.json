@@ -20,8 +20,7 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
-    "smooth-scrollbar": "^8.4.0",
-    "social-logos": "^2.1.0"
+    "smooth-scrollbar": "^8.4.0"
   },
   "proxy": "http://localhost:1600",
   "scripts": {
