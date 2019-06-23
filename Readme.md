@@ -1,6 +1,8 @@
 # Website - Wildcat
 Site accessible at https://www.ashleywildcat.com/
 
+![Imgur Image](https://i.imgur.com/czh0Jya.png)
+
 ## Necessary Files
 
 config.json, client/src/config.json, client/src/fire.js should be filled in with corresponding data of config_example.json, client/src/config_example.json, client/src/fire_example.js
