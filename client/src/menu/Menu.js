@@ -1,17 +1,16 @@
 import React from 'react';
+import MenuButton from 'menu/MenuButton.js';
+import MenuPanel from 'menu/MenuPanel.js';
+import MenuBar from 'menu/MenuBar.js';
 
-import MenuButton from './MenuButton.js';
-import MenuPanel from './MenuPanel.js';
-import MenuBar from './MenuBar.js';
+const Menu = () => {
+  return(
+    <div>
+      <MenuBar/>
+      <MenuButton/>
+      <MenuPanel/>
+    </div>
+  );
+};
 
-export default class Menu extends React.Component{
-  render(){
-    return(
-      <div>
-        <MenuBar/>
-        <MenuButton/>
-        <MenuPanel/>
-      </div>
-    );
-  }
-}
+export default Menu;

@@ -96,5 +96,9 @@ export const selectLoadedContentSessionsThree = createSelector(
     }
   }
 );
+
 /* images */
 export const selectImagesCurrentlyHovered = (state) => state.images.currentlyHovered;
+
+/* pages */
+export const selectPagesMenuDisplayed = (state) => state.pages.menuDisplayed;

@@ -76,7 +76,6 @@ const CustomObject = ({hoverCustomImage, image, title, subtitle}) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     hoverCustomImage: (imageUrl) => {
-      console.log(imageUrl);
       dispatch(imagesActions.hoverCustomImage(imageUrl));
     }
   };
