@@ -61,10 +61,13 @@ app.post('/api/v1/contact', (req, res)=>{
 	}
 	smtpTransport.sendMail(mailOptions, function(error, response){
    	if(error){
-      res.send(error);
+      res.status(400).send({
+        success: 'false',
+        message: error,
+      });
     }
     else{
-      res.send(response);
+      res.status(200).send(response);
     }
   });
 });

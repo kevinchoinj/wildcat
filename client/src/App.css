@@ -35,6 +35,7 @@ body * {
   font-size: 24px;
   width: 16.6666666666vw;
   padding: 4px;
+  font-family: 'Lato', Helvetica, sans-serif;
 }
 .contact_textarea {
   color: var(--gold-color);
