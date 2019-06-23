@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Scrollbar from 'smooth-scrollbar';
 import styled from 'styled-components';
 import {
-  selectTransitionStatus,
+  selectTransitionInProgress,
 } from 'reducers';
 
 const StyledWrapper = styled.div`
@@ -69,7 +69,7 @@ const StyledBody = styled.div`
     margin-left: 0px;
   }
 `;
-const SessionsTextWrapper = ({transitionStatus, title, children}) => {
+const SessionsTextWrapper = ({transitionInProgress, title, children}) => {
   useEffect(() => {
     Scrollbar.init(document.querySelector('#scroll_sessions'), {
       alwaysShowTracks: true,
@@ -78,7 +78,7 @@ const SessionsTextWrapper = ({transitionStatus, title, children}) => {
   }, []);
   return (
     <StyledWrapper
-      transitionInProgress={transitionStatus === 'start' || transitionStatus === 'end'}
+      transitionInProgress={transitionInProgress}
       id="scroll_sessions"
     >
       <StyledTitleWrapper>
@@ -96,7 +96,7 @@ const SessionsTextWrapper = ({transitionStatus, title, children}) => {
 
 const mapStateToProps = (state) => {
   return {
-    transitionStatus: selectTransitionStatus(state),
+    transitionInProgress: selectTransitionInProgress(state),
   };
 };
 

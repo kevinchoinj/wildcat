@@ -6,24 +6,24 @@ import Background from 'components/Background';
 
 import Menu from 'menu/Menu';
 
-import SessionsText from 'components/pages-sessions/SessionsText';
+import SessionsText from 'components/sessions/SessionsText';
 import HomeOverlay from 'components/HomeOverlay';
 
 import Customs from 'pages/Customs';
 import Gallerypage from 'pages/Gallery';
 import Contact from 'pages/Contact';
 import Links from 'pages/Links';
-import SessionsButtons from 'components/pages-sessions/SessionsButtons';
+import SessionsButtons from 'components/sessions/SessionsButtons';
 
 import MessageSuccess from 'pages/MessageSuccess';
 import MessageFailure from 'pages/MessageFailure';
 
-import SessionsMobileNav from 'components/pages-sessions/SessionsMobileNav';
+import SessionsMobileNav from 'components/sessions/SessionsMobileNav';
 
 import GetFireBase from 'services/GetFireBase';
 
-import LinksSplit from 'components/LinksSplit';
-import MobileBackground from 'components/MobileBackground';
+import SplitOverlay from 'components/SplitOverlay';
+import MobileOverlay from 'components/MobileOverlay';
 
 import {pageData} from 'data/pageData';
 
@@ -44,8 +44,8 @@ class SiteRoutes extends React.Component {
 
         <Menu/>
 
-        <LinksSplit/>
-        <MobileBackground/>
+        <SplitOverlay/>
+        <MobileOverlay/>
 
         {loadedContent[pageData.sessionsOneLink] ||
           loadedContent[pageData.sessionsTwoLink] ||

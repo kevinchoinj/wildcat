@@ -10,6 +10,8 @@ import contact from 'reducers/contact';
 
 import {createSelector} from 'reselect';
 
+import {pageData} from 'data/pageData';
+
 const reducers={
   pages,
   scroll,
@@ -39,11 +41,10 @@ export const selectTransitionInProgress = createSelector(
     }
   }
 );
-
 export const selectLoadedContentHome = createSelector(
   selectLoadedContent,
   (loadedContent) => {
-    if (loadedContent === '/') {
+    if (loadedContent[pageData.homeLink]) {
       return true;
     }
     else {
@@ -51,3 +52,49 @@ export const selectLoadedContentHome = createSelector(
     }
   }
 );
+export const selectLoadedContentSessions = createSelector(
+  selectLoadedContent,
+  (loadedContent) => {
+    if ((loadedContent[pageData.sessionsOneLink]) || (loadedContent[pageData.sessionsTwoLink]) || (loadedContent[pageData.sessionsThreeLink])) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+);
+export const selectLoadedContentSessionsOne = createSelector(
+  selectLoadedContent,
+  (loadedContent) => {
+    if (loadedContent[pageData.sessionsOne]) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+);
+export const selectLoadedContentSessionsTwo = createSelector(
+  selectLoadedContent,
+  (loadedContent) => {
+    if (loadedContent[pageData.sessionsTwo]) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+);
+export const selectLoadedContentSessionsThree = createSelector(
+  selectLoadedContent,
+  (loadedContent) => {
+    if (loadedContent[pageData.sessionsThree]) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+);
+/* images */
+export const selectImagesCurrentlyHovered = (state) => state.images.currentlyHovered;

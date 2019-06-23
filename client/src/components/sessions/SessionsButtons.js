@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {pageData} from 'data/pageData';
 import {Link} from 'react-router-dom';
 import styled, {keyframes, css} from 'styled-components';
 import {
-  selectTransitionStatus,
-  selectLoadedContent,
+  selectTransitionInProgress,
+  selectLoadedContentSessionsOne,
+  selectLoadedContentSessionsTwo,
+  selectLoadedContentSessionsThree
 } from 'reducers';
 
 const overlayOpen = keyframes`
@@ -107,10 +108,15 @@ const StyledColumn = styled.div`
   }
 `;
 
-const SessionsButtons = ({loadedContent, transitionStatus}) => {
+const SessionsButtons = ({
+  loadedContentSessionsOne,
+  loadedContentSessionsTwo,
+  loadedContentSessionsThree,
+  transitionInProgress
+}) => {
   return(
-    <StyledWrapper transitionInProgress={transitionStatus === 'start' || transitionStatus === 'end'}>
-      <StyledColumn isActive={loadedContent[pageData.sessionsOneLink]}>
+    <StyledWrapper transitionInProgress={transitionInProgress}>
+      <StyledColumn isActive={loadedContentSessionsOne}>
         <Link to="/sessions">
           <StyledImage
             src="/static/images/7.jpg"
@@ -122,7 +128,7 @@ const SessionsButtons = ({loadedContent, transitionStatus}) => {
           </StyledText>
         </Link>
       </StyledColumn>
-      <StyledColumn isActive={loadedContent[pageData.sessionsTwoLink]}>
+      <StyledColumn isActive={loadedContentSessionsTwo}>
         <Link to="/sessions/2">
           <StyledImage
             src="/static/images/2.jpg"
@@ -134,7 +140,7 @@ const SessionsButtons = ({loadedContent, transitionStatus}) => {
           </StyledText>
         </Link>
       </StyledColumn>
-      <StyledColumn isActive={loadedContent[pageData.sessionsThreeLink]}>
+      <StyledColumn isActive={loadedContentSessionsThree}>
         <Link to="/sessions/3">
           <StyledImage
             src="/static/images/6.jpg"
@@ -152,8 +158,10 @@ const SessionsButtons = ({loadedContent, transitionStatus}) => {
 
 const mapStateToProps = (state) => {
   return {
-    transitionStatus: selectTransitionStatus(state),
-    loadedContent: selectLoadedContent(state),
+    transitionInProgress: selectTransitionInProgress(state),
+    loadedContentSessionsOne: selectLoadedContentSessionsOne(state),
+    loadedContentSessionsTwo: selectLoadedContentSessionsTwo(state),
+    loadedContentSessionsThree: selectLoadedContentSessionsThree(state),
   };
 };
 

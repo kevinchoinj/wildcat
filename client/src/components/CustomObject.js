@@ -1,54 +1,85 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import * as imagesActions from 'actions/images';
+import styled from 'styled-components';
 
-class CustomObject extends React.Component {
-
-  hoverCustomImage = (imageUrl) => {
-    this.props.imagesActions.hoverCustomImage(imageUrl);
+const StyledContainer = styled.div`
+  width: 50%;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  overflow: hidden;
+  @media screen and (max-width: 768px) {
+    width: 100%;
   }
+`;
+const StyledWrapper = styled.div`
+  border-bottom: 1px solid rgba(175,151,89,.16);
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+`;
+const StyledTitle = styled.div`
+  text-align: center;
+  font-weight: 600;
+  font-size: 36px;
+`;
+const StyledSubtitle = styled.div`
+  text-align: center;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 400;
+  margin-bottom: 16px;
+`;
 
-  render() {
+const Image = ({className, src, alt}) => (
+  <img
+    src={src}
+    alt={alt}
+    className={className}
+  />
+);
+const StyledImage = styled(Image)`
+  width: 100%;
+  height: 100%;
+  transition: .2s ease-out;
+  object-fit: cover;
+`;
 
-    const {
-      image,
-      title,
-      subtitle,
-    } = this.props;
+const CustomObject = ({hoverCustomImage, image, title, subtitle}) => {
+  return (
+    <StyledWrapper>
+      <StyledContainer>
+        <StyledTitle>
+          {title}
+        </StyledTitle>
+        <StyledSubtitle>
+          {subtitle}
+        </StyledSubtitle>
+      </StyledContainer>
 
-    const imageStyle={
-      backgroundImage: 'url('+image+')',
-    };
+      <StyledContainer onMouseEnter={() => hoverCustomImage(image)}>
+        <StyledImage
+          src={image}
+          alt={title}
+        />
+      </StyledContainer>
+    </StyledWrapper>
+  );
+};
 
-    return (
-      <div className="custom_subwrapper">
-        <div className="custom_subwrapper__half">
-          <div className="custom_title">
-            {title}
-          </div>
-          <div className="custom_subtitle">
-            {subtitle}
-          </div>
-        </div>
+const mapDispatchToProps = (dispatch) => {
+  return {
+    hoverCustomImage: (imageUrl) => {
+      console.log(imageUrl);
+      dispatch(imagesActions.hoverCustomImage(imageUrl));
+    }
+  };
+};
 
-        <div className="custom_subwrapper__half">
-          <div
-            className="custom_image"
-            style={imageStyle}
-            onMouseEnter = {()=>this.hoverCustomImage(image)}
-          >
-          </div>
-        </div>
-      </div>
-    );
-  }
-}
-
-export default connect(
-  (state, ownProps) => ({
-  }),
-  dispatch => ({
-    imagesActions: bindActionCreators(imagesActions, dispatch),
-  }),
-)(CustomObject);
+export default connect (null, mapDispatchToProps)(CustomObject);
