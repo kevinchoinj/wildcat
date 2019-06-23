@@ -3,7 +3,7 @@ import AboutItemPublic from 'components/AboutItemPublic';
 import SessionsTextWrapper from 'components/pages-sessions/SessionsTextWrapper';
 import {displayValues} from 'data/displayValues';
 
-const listItems = () => displayValues.sessionsOne.map((item) => {
+const listItems = (keyValue) => displayValues[keyValue].map((item) => {
   return (
     <div key={item.label}>
       <AboutItemPublic
@@ -14,10 +14,10 @@ const listItems = () => displayValues.sessionsOne.map((item) => {
   );
 });
 
-const SessionsOneText = () => {
+const SessionsOneText = ({keyValue}) => {
   return(
     <SessionsTextWrapper title="Stats">
-      {listItems()}
+      {listItems(keyValue)}
     </SessionsTextWrapper>
   );
 };

@@ -20,6 +20,7 @@ const StyledWrapper = styled.div`
     pointer-events: auto;
   }
   @media screen and (max-width: 992px) {
+    transition: .2s ease;
     margin-top: 150px;
     height: calc(100vh - 150px);
   }
@@ -51,6 +52,10 @@ const StyledTitle = styled.div`
   }
   &:before {
     flex-basis: 33.33333333333%;
+    @media screen and (max-width: 992px) {
+      flex-basis: auto;
+      flex: 1;
+    }
   }
 `;
 const StyledBody = styled.div`

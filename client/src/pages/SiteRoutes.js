@@ -6,9 +6,7 @@ import Background from 'components/Background';
 
 import Menu from 'menu/Menu';
 
-import SessionsOneText from 'components/pages-sessions/SessionsOneText';
-import SessionsTwoText from 'components/pages-sessions/SessionsTwoText';
-import SessionsThreeText from 'components/pages-sessions/SessionsThreeText';
+import SessionsText from 'components/pages-sessions/SessionsText';
 import HomeOverlay from 'components/HomeOverlay';
 
 import Customs from 'pages/Customs';
@@ -64,12 +62,21 @@ class SiteRoutes extends React.Component {
           <Contact />:null}
         {loadedContent[pageData.linksLink]?
           <Links />:null}
-        {loadedContent[pageData.sessionsOneLink]?
-          <SessionsOneText />:null}
-        {loadedContent[pageData.sessionsTwoLink]?
-          <SessionsTwoText/>:null}
-        {loadedContent[pageData.sessionsThreeLink]?
-          <SessionsThreeText/>:null}
+        {loadedContent[pageData.sessionsOneLink] &&
+          <SessionsText
+            key="sessionsOne"
+            keyValue="sessionsOne"
+          />}
+        {loadedContent[pageData.sessionsTwoLink] &&
+          <SessionsText
+            key="sessionsTwo"
+            keyValue="sessionsTwo"
+          />}
+        {loadedContent[pageData.sessionsThreeLink] &&
+          <SessionsText
+            key="sessionsThree"
+            keyValue="sessionsThree"
+          />}
         {loadedContent[pageData.messageSuccess]?
           <MessageSuccess/>:null}
         {loadedContent[pageData.messageFailure]?
