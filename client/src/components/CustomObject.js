@@ -49,11 +49,14 @@ const StyledImage = styled(Image)`
   height: 100%;
   transition: .2s ease-out;
   object-fit: cover;
+  &:hover {
+    transform: scale(1.03, 1.03);
+  }
 `;
 
-const CustomObject = ({hoverCustomImage, image, title, subtitle}) => {
+const CustomObject = ({hoverCustomImage, image, title, subtitle, transitionInProgress}) => {
   return (
-    <StyledWrapper>
+    <StyledWrapper transitionInProgress={transitionInProgress}>
       <StyledContainer>
         <StyledTitle>
           {title}

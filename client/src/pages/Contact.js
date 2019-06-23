@@ -1,70 +1,132 @@
-import React from 'react';
-import { bindActionCreators } from 'redux';
+import React, {useEffect} from 'react';
 import { connect } from 'react-redux';
 import * as contactActions from 'actions/contact';
-import * as pagesActions from 'actions/pages';
-import classNames from 'classnames';
 import Scrollbar from 'smooth-scrollbar';
-
 import ContactForm from 'components/forms/ContactForm';
+import styled from 'styled-components';
 import {pageData} from 'data/pageData';
+import {
+  selectTransitionInProgress,
+  selectContactContactSending,
+} from 'reducers';
 
-class Contact extends React.Component {
-  componentDidMount() {
+const StyledWrapper = styled.div`
+  opacity: ${props => props.transitionInProgress ? 0 : 1};
+  transition: .3s ease-out;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: calc(100vh - 75px);
+  position: fixed;
+  margin-top: 75px;
+  color: var(--gold-color);
+  font-size: 24px;
+  letter-spacing: 1px;
+  font-weight: 600;
+`;
+const StyledContainer = styled.div`
+  padding: 24px 0px;
+`;
+const StyledHeader = styled.div`
+  display: flex;
+  width: 100%;
+  align-items: center;
+  font-weight: 700;
+  color: var(--gold-color);
+  font-size: 36px;
+  margin-bottom: 24px;
+  &:before,
+  &:after {
+    content: '';
+    background: var(--gold-color);
+    height: 1px;
+    margin: 6px;
+  }
+  &:before {
+    flex-basis: 16.666666666666%;
+  }
+  &:after {
+    flex: 1;
+  }
+  @media screen and (max-width: 992px) {
+    text-align: center;
+    &:after,
+    &:before {
+      flex: 1;
+    }
+  }
+`;
+const StyledEmail = styled.div`
+  font-size: 24px;
+  @media screen and (max-width: 992px) {
+    font-size: 16px;
+  }
+`;
+const StyledBody = styled.div`
+  width: 83.3333333333%;
+  margin-left: 16.6666666666%;
+  @media screen and (max-width: 992px) {
+    width: 100%;
+    margin-left: 0px;
+    padding: 0px;
+    form {
+      padding: 0px 14px;
+    }
+  }
+`;
+const StyledNotice = styled.div`
+  width: 83.3333333333%;
+  margin-left: 16.6666666666%;
+`;
+
+const Contact = ({transitionInProgress, contactSending, postContact}) => {
+  useEffect(() => {
     Scrollbar.init(document.querySelector('#scroll_contact'), {
       alwaysShowTracks: true,
       syncCallbacks: true,
     });
-  }
-
-  submitForm = values => {
-    return this.props.contactActions.postContact(values, '/api/v1/contact');
-  }
-
-  render(){
-    const {
-      transitionStatus,
-      contactSending,
-    } = this.props;
-
-    const wrapperName = classNames({
-      'contact_wrapper': true,
-      'contact_wrapper--transition': transitionStatus === 'start' || transitionStatus === 'end',
-    });
-
-    return(
-      <div className={wrapperName} id="scroll_contact">
-        <div className="contact_container">
-          <div className="contact_title__wrapper">
-            <div className="contact_title">
-              Contact
-              <div className="contact_email">
-                {pageData.emailAddress}
-              </div>
-            </div>
+  });
+  return(
+    <StyledWrapper
+      id="scroll_contact"
+      transitionInProgress={transitionInProgress}
+    >
+      <StyledContainer>
+        <StyledHeader>
+          <div>
+            Contact
+            <StyledEmail>
+              {pageData.emailAddress}
+            </StyledEmail>
           </div>
+        </StyledHeader>
 
-          <div className="contact_form_container">
-            <ContactForm onSubmit = {this.submitForm}/>
-          </div>
+        <StyledBody>
+          <ContactForm onSubmit = {(values)=>postContact(values)}/>
+        </StyledBody>
 
-          {contactSending?
-            <div className="left_offset">Sending...</div>
-            :
-            null}
-        </div>
-      </div>
-    );
-  }
-}
+        {contactSending?
+          <StyledNotice>Sending...</StyledNotice>
+          :
+          null}
+      </StyledContainer>
+    </StyledWrapper>
+  );
+};
 
-export default connect(
-  (state, ownProps) => ({
-    transitionStatus: state.transition.transitionStatus,
-    contactSending: state.contact.contactSending,
-  }),
-  (dispatch) => ({
-    pagesActions: bindActionCreators(pagesActions, dispatch),
-    contactActions: bindActionCreators(contactActions, dispatch)
-  }),
-)(Contact);
+const mapStateToProps = (state) => {
+  return {
+    transitionInProgress: selectTransitionInProgress(state),
+    contactSending: selectContactContactSending(state),
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    postContact: (values) => {
+      dispatch(contactActions.postContact(values, '/api/v1/contact'));
+    }
+  };
+};
+
+export default connect (mapStateToProps, mapDispatchToProps)(Contact);

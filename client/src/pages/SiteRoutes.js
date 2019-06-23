@@ -20,78 +20,71 @@ import MessageFailure from 'pages/MessageFailure';
 
 import SessionsMobileNav from 'components/sessions/SessionsMobileNav';
 
-import GetFireBase from 'services/GetFireBase';
-
 import SplitOverlay from 'components/SplitOverlay';
 import MobileOverlay from 'components/MobileOverlay';
 
 import {pageData} from 'data/pageData';
+import {
+  selectLoadedContent,
+} from 'reducers';
 
-class SiteRoutes extends React.Component {
+const SiteRoutes = ({loadedContent}) => {
+  return (
+    <div>
+      <Background/>
 
-  render() {
+      <Menu/>
 
-    const {
-      loadedContent,
-    } =this.props;
+      <SplitOverlay/>
+      <MobileOverlay/>
 
-    return (
-      <div>
-        <div className="text_hidden">
-          <strong>Ashley Wildcat</strong>
-        </div>
-        <Background/>
+      {loadedContent[pageData.sessionsOneLink] ||
+        loadedContent[pageData.sessionsTwoLink] ||
+        loadedContent[pageData.sessionsThreeLink] ?
+        <SessionsButtons />:null}
 
-        <Menu/>
+      {loadedContent[pageData.kittensLink]?
+        <CustomsPreview />:null}
+      {loadedContent[pageData.kittensLink]?
+        <Customs />:null}
+      {loadedContent[pageData.galleryLink]?
+        <Gallerypage />:null}
+      {loadedContent[pageData.contactLink]?
+        <Contact />:null}
+      {loadedContent[pageData.linksLink]?
+        <Links />:null}
+      {loadedContent[pageData.sessionsOneLink] &&
+        <SessionsText
+          key="sessionsOne"
+          keyValue="sessionsOne"
+          title="Stats"
+        />}
+      {loadedContent[pageData.sessionsTwoLink] &&
+        <SessionsText
+          key="sessionsTwo"
+          keyValue="sessionsTwo"
+          title="Style"
+        />}
+      {loadedContent[pageData.sessionsThreeLink] &&
+        <SessionsText
+          key="sessionsThree"
+          keyValue="sessionsThree"
+          title="Sessions"
+        />}
+      {loadedContent[pageData.messageSuccess]?
+        <MessageSuccess/>:null}
+      {loadedContent[pageData.messageFailure]?
+        <MessageFailure/>:null}
+      <SessionsMobileNav/>
+      <HomeOverlay/>
+    </div>
+  );
+};
 
-        <SplitOverlay/>
-        <MobileOverlay/>
+const mapStateToProps = (state) => {
+  return {
+    loadedContent: selectLoadedContent(state),
+  };
+};
 
-        {loadedContent[pageData.sessionsOneLink] ||
-          loadedContent[pageData.sessionsTwoLink] ||
-          loadedContent[pageData.sessionsThreeLink] ?
-          <SessionsButtons />:null}
-
-        {loadedContent[pageData.kittensLink]?
-          <CustomsPreview />:null}
-        {loadedContent[pageData.kittensLink]?
-          <Customs />:null}
-        {loadedContent[pageData.galleryLink]?
-          <Gallerypage />:null}
-        {loadedContent[pageData.contactLink]?
-          <Contact />:null}
-        {loadedContent[pageData.linksLink]?
-          <Links />:null}
-        {loadedContent[pageData.sessionsOneLink] &&
-          <SessionsText
-            key="sessionsOne"
-            keyValue="sessionsOne"
-          />}
-        {loadedContent[pageData.sessionsTwoLink] &&
-          <SessionsText
-            key="sessionsTwo"
-            keyValue="sessionsTwo"
-          />}
-        {loadedContent[pageData.sessionsThreeLink] &&
-          <SessionsText
-            key="sessionsThree"
-            keyValue="sessionsThree"
-          />}
-        {loadedContent[pageData.messageSuccess]?
-          <MessageSuccess/>:null}
-        {loadedContent[pageData.messageFailure]?
-          <MessageFailure/>:null}
-        <SessionsMobileNav/>
-        <HomeOverlay/>
-        <GetFireBase/>
-      </div>
-    );
-  }
-}
-export default connect(
-  (state, ownProps) => ({
-    loadedContent: state.transition.loadedContent,
-  }),
-  dispatch => ({
-  }),
-)(SiteRoutes);
+export default connect (mapStateToProps, null)(SiteRoutes);

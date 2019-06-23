@@ -27,6 +27,12 @@ const StyledThumbnail = styled(Link)`
       transform: scale(1.05, 1.05);
     }
   }
+  @media screen and (max-width: 992px) {
+    width: 50vw;
+  }
+  @media screen and (max-width: 768px) {
+    width: 100vw;
+  }
 `;
 
 const StyledContainer = styled.div`

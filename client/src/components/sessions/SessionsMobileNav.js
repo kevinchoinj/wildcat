@@ -35,6 +35,10 @@ const StyledWrapper = styled.div`
     &:nth-child(2) {
       border-right: 1px solid var(--gold-color);
     }
+    &:hover {
+      background-color: var(--gold-color);
+      color: #000;
+    }
   }
 `;
 

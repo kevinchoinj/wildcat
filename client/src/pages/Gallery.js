@@ -1,32 +1,35 @@
 import React, {Suspense} from 'react';
 import { connect } from 'react-redux';
-import classNames from 'classnames';
+import styled from 'styled-components';
+import {
+  selectTransitionInProgress,
+} from 'reducers';
 const GalleryWrapper = React.lazy(() => import('../gallery/GalleryWrapper'));
 
-class Gallery extends React.Component {
-  render(){
-    const {
-      transitionStatus
-    } = this.props;
+const StyledWrapper = styled.div`
+  opacity: ${props => props.transitionInProgress ? 0 : 1};
+  position: absolute;
+  top: 0px;
+  margin-top: 75px;
+  width: 100vw;
+  height: calc(100vh - 75px);
+  transition: .4s ease-out;
+`;
 
-    const wrapperName = classNames({
-      'gallery_wrapper': true,
-      'gallery_wrapper--transition': transitionStatus === 'start' || transitionStatus === 'end',
-    });
-    return(
-      <div className={wrapperName}>
-        <Suspense fallback={<div>Loading...</div>}>
-          <GalleryWrapper/>
-        </Suspense>
-      </div>
-    );
-  }
-}
+const Gallery = ({transitionInProgress}) => {
+  return (
+    <StyledWrapper transitionInProgress={transitionInProgress}>
+      <Suspense fallback={<div>Loading...</div>}>
+        <GalleryWrapper/>
+      </Suspense>
+    </StyledWrapper>
+  );
+};
 
-export default connect(
-  (state, ownProps) => ({
-    transitionStatus: state.transition.transitionStatus,
-  }),
-  (dispatch) => ({
-  }),
-)(Gallery);
+const mapStateToProps = (state) => {
+  return {
+    transitionInProgress: selectTransitionInProgress(state),
+  };
+};
+
+export default connect (mapStateToProps, null)(Gallery);

@@ -2,14 +2,6 @@ import React from 'react';
 import {Route, Switch} from 'react-router-dom';
 
 import 'App.css';
-import 'styles/columnone.css';
-import 'styles/customs.css';
-import 'styles/links.css';
-import 'styles/gallery.css';
-import 'styles/admin.css';
-import 'styles/menu.css';
-import 'styles/about.css';
-import 'styles/contact.css';
 
 import SiteRoutes from 'pages/SiteRoutesWrapper';
 import SiteIcon from 'services/SiteIcon';

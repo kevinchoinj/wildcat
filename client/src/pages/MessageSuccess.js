@@ -1,49 +1,89 @@
-import React from 'react';
-import { bindActionCreators } from 'redux';
+import React, {useEffect} from 'react';
 import { connect } from 'react-redux';
-import * as pagesActions from 'actions/pages';
-import classNames from 'classnames';
 import Scrollbar from 'smooth-scrollbar';
+import styled from 'styled-components';
+import {
+  selectTransitionInProgress,
+} from 'reducers';
 
-class MessageSuccess extends React.Component {
-  componentDidMount() {
-    Scrollbar.init(document.querySelector('#scroll_links'), {
+const StyledWrapper = styled.div`
+  opacity: ${props => props.transitionInProgress ? 0 : 1};
+  transition: .4s ease-out;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: calc(100vh - 75px);
+  position: fixed;
+  margin-top: 75px;
+  color: var(--gold-color);
+  font-size: 24px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  overflow-wrap: break-word;
+`;
+const StyledContainer = styled.div`
+  padding: 24px 0px;
+`;
+const StyledTitle = styled.div`
+  display: flex;
+  width: 100%;
+  align-items: center;
+  font-weight: 700;
+  color: var(--gold-color);
+  font-size: 36px;
+  margin-bottom: 24px;
+  &:after,
+  &:before {
+    content: '';
+    background: var(--gold-color);
+    height: 1px;
+    margin: 6px;
+  }
+  &:before {
+    flex-basis: 16.666666666666%;
+  }
+  &:after {
+    flex: 1;
+  }
+`;
+const StyledMessage = styled.div`
+  width: 83.3333333333%;
+  margin-left: 16.6666666666%;
+  @media screen and (max-width: 768px) {
+    margin-left: 0;
+    width: 100%;
+    padding: 0 1rem;
+  }
+`;
+
+const MessageFailure = ({transitionInProgress}) => {
+  useEffect(() => {
+    Scrollbar.init(document.querySelector('#scroll_success'), {
       alwaysShowTracks: true,
       syncCallbacks: true,
     });
-  }
-  render(){
-    const {
-      transitionStatus,
-    } = this.props;
+  });
+  return(
+    <StyledWrapper
+      id="scroll_success"
+      transitionInProgress={transitionInProgress}
+    >
+      <StyledContainer>
+        <StyledTitle>
+          Message Successfully Sent
+        </StyledTitle>
+        <StyledMessage>
+          I will contact you back as soon as possible!
+        </StyledMessage>
+      </StyledContainer>
+    </StyledWrapper>
+  );
+};
 
-    const wrapperName = classNames({
-      'links_wrapper': true,
-      'links_wrapper--transition': transitionStatus === 'start' || transitionStatus === 'end',
-    });
+const mapStateToProps = (state) => {
+  return {
+    transitionInProgress: selectTransitionInProgress(state),
+  };
+};
 
-    return(
-      <div className={wrapperName} id="scroll_links">
-        <div className="links_container">
-          <div className="links_title__wrapper">
-            <div className="links_title">
-              Message Successfully Sent
-            </div>
-          </div>
-          <div className="links_link__container">
-            <div className="left_offset">
-              I will contact you back as soon as possible!
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-}
-
-export default connect(
-  (state, ownProps) => ({
-    transitionStatus: state.transition.transitionStatus,
-  }),
-  (dispatch) => ({pagesActions: bindActionCreators(pagesActions, dispatch)}),
-)(MessageSuccess);
+export default connect (mapStateToProps, null)(MessageFailure);

@@ -72,6 +72,7 @@ const StyledWrapper = styled.div`
   transition-duration: .3s;
   transition-timing-function: ease-out;
   z-index: 12;
+  overflow-wrap: break-word;
   transform: ${props => props.menuDisplay && 'translateX(16.66666666666666vw)'};
   @media screen and (max-width: 992px) {
     width: 260px;

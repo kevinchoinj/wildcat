@@ -2,9 +2,6 @@ import pages from 'reducers/pages';
 import scroll from 'reducers/scroll';
 import { reducer as reducerForm } from 'redux-form';
 import images from 'reducers/images';
-import adminmenu from 'reducers/adminmenu';
-import admin from 'reducers/admin';
-import authentication from 'reducers/authentication';
 import transition from 'reducers/transition';
 import contact from 'reducers/contact';
 
@@ -15,11 +12,8 @@ import {pageData} from 'data/pageData';
 const reducers={
   pages,
   scroll,
-  authentication,
   form: reducerForm,
   images,
-  adminmenu,
-  admin,
   transition,
   contact,
 };
@@ -66,7 +60,7 @@ export const selectLoadedContentSessions = createSelector(
 export const selectLoadedContentSessionsOne = createSelector(
   selectLoadedContent,
   (loadedContent) => {
-    if (loadedContent[pageData.sessionsOne]) {
+    if (loadedContent[pageData.sessionsOneLink]) {
       return true;
     }
     else {
@@ -77,7 +71,7 @@ export const selectLoadedContentSessionsOne = createSelector(
 export const selectLoadedContentSessionsTwo = createSelector(
   selectLoadedContent,
   (loadedContent) => {
-    if (loadedContent[pageData.sessionsTwo]) {
+    if (loadedContent[pageData.sessionsTwoLink]) {
       return true;
     }
     else {
@@ -88,7 +82,7 @@ export const selectLoadedContentSessionsTwo = createSelector(
 export const selectLoadedContentSessionsThree = createSelector(
   selectLoadedContent,
   (loadedContent) => {
-    if (loadedContent[pageData.sessionsThree]) {
+    if (loadedContent[pageData.sessionsThreeLink]) {
       return true;
     }
     else {
@@ -102,3 +96,6 @@ export const selectImagesCurrentlyHovered = (state) => state.images.currentlyHov
 
 /* pages */
 export const selectPagesMenuDisplayed = (state) => state.pages.menuDisplayed;
+
+/* contact */
+export const selectContactContactSending = (state) =>  state.contact.contactSending;
