@@ -135,14 +135,12 @@ const MenuPanel = ({closeMenu, menuDisplay, loadedContent}) => {
     loadedContent[pageData.sessionsTwoLink] ||
     loadedContent[pageData.sessionsThreeLink]
   );
-  const customsSelected  = (loadedContent[pageData.kittensLink]);
   const gallerySelected  = (loadedContent[pageData.galleryLink]);
   const linksSelected  = (loadedContent[pageData.linksLink]);
   const contactSelected  = (loadedContent[pageData.contactLink]);
   const menuValues = [
     {text: 'HOME', link: pageData.homeLink, selected: homeSelected},
     {text: 'SESSIONS', link: pageData.sessionsOneLink, selected: sessionsSelected},
-    {text: 'CUSTOMS', link: pageData.kittensLink, selected: customsSelected},
     {text: 'GALLERY', link: pageData.galleryLink, selected: gallerySelected},
     {text: 'LINKS', link: pageData.linksLink, selected: linksSelected},
     {text: 'CONTACT', link: pageData.contactLink, selected: contactSelected},

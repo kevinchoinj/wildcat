@@ -9,7 +9,6 @@ import Menu from 'menu/Menu';
 import SessionsText from 'components/sessions/SessionsText';
 import HomeOverlay from 'components/HomeOverlay';
 
-import Customs from 'pages/Customs';
 import Gallerypage from 'pages/Gallery';
 import Contact from 'pages/Contact';
 import Links from 'pages/Links';
@@ -45,8 +44,6 @@ const SiteRoutes = ({loadedContent}) => {
 
       {loadedContent[pageData.kittensLink]?
         <CustomsPreview />:null}
-      {loadedContent[pageData.kittensLink]?
-        <Customs />:null}
       {loadedContent[pageData.galleryLink]?
         <Gallerypage />:null}
       {loadedContent[pageData.contactLink]?
