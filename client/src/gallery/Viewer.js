@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import Lightbox from 'react-images';
+import Carousel, { Modal, ModalGateway } from 'react-images';
 import styled from 'styled-components';
 
 const Link = ({className, index, children, openLightbox}) => (
@@ -63,6 +63,7 @@ const RenderGallery = ({images, openLightbox}) => {
   );
 };
 
+
 const Viewer = ({images}) => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImage, setCurrentImage] = useState(0);
@@ -76,30 +77,23 @@ const Viewer = ({images}) => {
     setCurrentImage(0);
     setLightboxOpen(false);
   };
-  const handleClickImage = () => {
-    if (currentImage === images.length - 1) {
-      return;
-    }
-    setCurrentImage(currentImage + 1);
-  };
   return (
-    <div>
+    <React.Fragment>
       <RenderGallery
         images={images}
         openLightbox = {openLightbox}
       />
-      <Lightbox
-        currentImage={currentImage}
-        images={images}
-        isOpen={lightboxOpen}
-        onClickImage={handleClickImage}
-        onClickNext={() => setCurrentImage(currentImage + 1)}
-        onClickPrev={() => setCurrentImage(currentImage - 1)}
-        onClose={closeLightbox}
-        backdropClosesModal={true}
-        openLightbox = {openLightbox}
-      />
-    </div>
+      <ModalGateway>
+        {lightboxOpen ? (
+          <Modal onClose={closeLightbox}>
+            <Carousel
+              currentIndex={currentImage}
+              views={images}
+            />
+          </Modal>
+        ) : null}
+      </ModalGateway>
+    </React.Fragment>
   );
 };
 
