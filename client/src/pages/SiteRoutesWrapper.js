@@ -18,17 +18,17 @@ class SiteRouteswrapper extends React.Component {
   componentDidUpdate(prevProps) {
     const current = this.props.location;
     const previous = prevProps.location;
-    if (previous.pathname==='/') {
+    /*if (previous.pathname==='/') {
       this.startTransition('end', previous.pathname, current.pathname);
       setTimeout(() =>{
         this.props.transitionActions.startTransition('reset');
       }, 400);
-    }
-    else if (current !== previous) {
+    }*/
+    if (current !== previous) {
       this.props.transitionActions.startTransition('start');
       setTimeout(() => {
         this.startTransition('end', previous.pathname, current.pathname);
-      }, 700);
+      }, 400);
       setTimeout(() => {
         this.props.transitionActions.startTransition('reset');
       }, 800);
