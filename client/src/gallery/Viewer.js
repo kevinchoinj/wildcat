@@ -2,13 +2,14 @@ import React, {useState} from 'react';
 import Carousel, { Modal, ModalGateway } from 'react-images';
 import styled from 'styled-components';
 
-const Link = ({className, index, children, openLightbox}) => (
-  <div
+const Link = ({src, className, index, children, openLightbox}) => (
+  <a
+    href={src}
     className={className}
     onClick={(e) => openLightbox(index, e)}
   >
     {children}
-  </div>
+  </a>
 );
 const StyledThumbnail = styled(Link)`
   padding: 0px;

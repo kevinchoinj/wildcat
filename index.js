@@ -1,37 +1,15 @@
-var express = require("express");
-var proxy = require("express-http-proxy");
-
+const express = require("express");
 const path = require('path');
 const compression = require('compression');
-var bodyParser = require('body-parser');
-var nodemailer = require('nodemailer');
-var json = require('./config.json');
+const bodyParser = require('body-parser');
+const nodemailer = require('nodemailer');
+const json = require('./config.json');
 const app = express();
 
 // Serve static files from the React app
 app.use(compression());
-app.use(express.static(path.join(__dirname, 'client/build')));
-app.use('/static', express.static('public'));
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
-
-/*======================================
-=           GOOGLE ANALYTICS           =
-======================================*/
-function getIpFromReq (req) { // get the client's IP address
-    var bareIP = ":" + ((req.connection.socket && req.connection.socket.remoteAddress)
-        || req.headers["x-forwarded-for"] || req.connection.remoteAddress || "");
-    return (bareIP.match(/:([^:]+)$/) || [])[1] || "127.0.0.1";
-}
-
-// proxying requests from /analytics to www.google-analytics.com.
-app.use("/analytics", proxy("www.google-analytics.com", {
-    proxyReqPathResolver: function (req) {
-        return req.url + (req.url.indexOf("?") === -1 ? "?" : "&")
-            + "uip=" + encodeURIComponent(getIpFromReq(req));
-    }
-}));
 
 /*======================================
 =             NODEMAILER              =
@@ -47,7 +25,6 @@ var smtpTransport = nodemailer.createTransport({
     tls: {rejectUnauthorized: false},
     debug:true
 });
-
 
 app.post('/api/v1/contact', (req, res)=>{
   var mailOptions={
@@ -74,11 +51,12 @@ app.post('/api/v1/contact', (req, res)=>{
 
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));
+app.use('/static', express.static('public'));
 
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname+'/client/build/index.html'));
+  res.sendFile(path.join(`${__dirname}/client/build/index.html`));
 });
 
 const port = process.env.PORT || 1600;
