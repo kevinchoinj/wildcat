@@ -1,50 +1,61 @@
-import React from 'react';
-import {bindActionCreators} from 'redux';
+import React, {useState, useEffect, useCallback} from 'react';
 import {connect} from 'react-redux';
 import * as transitionActions from 'actions/transition';
 import SiteRoutes from 'pages/SiteRoutes';
 
-class SiteRouteswrapper extends React.Component {
+const SiteRoutesContainer = ({location, startTransition, loadContent}) => {
+  const [current, setCurrent] = useState(null);
+  useCallback(() => {
+    setCurrent(location.pathname);
+    loadContent(current, true);
+  }, [current, loadContent, location.pathname]);
 
-  componentDidMount(){
-    let currentName = this.props.location.pathname;
-    this.props.transitionActions.loadContent(currentName, true);
-  }
-  startTransition = (status, currentName, nextName) => {
-    this.props.transitionActions.startTransition(status);
-    this.props.transitionActions.loadContent(currentName, false);
-    this.props.transitionActions.loadContent(nextName, true);
-  }
-  componentDidUpdate(prevProps) {
-    const current = this.props.location;
-    const previous = prevProps.location;
-    if (previous.pathname==='/') {
-      this.startTransition('end', previous.pathname, current.pathname);
-      setTimeout(() =>{
-        this.props.transitionActions.startTransition('reset');
-      }, 400);
+  useEffect(() => {
+    // no delay for animation when at homepage
+    if (current === '/') {
+      const newLocation = location.pathname;
+      loadContent(newLocation, true);
+      startTransition('end');
+      const timer = setTimeout(() => {
+        loadContent(current, false);
+        startTransition('reset');
+        setCurrent(newLocation);
+      }, 100);
+      return () => clearTimeout(timer);
     }
-    else if (current !== previous) {
-      this.props.transitionActions.startTransition('start');
-      setTimeout(() => {
-        this.startTransition('end', previous.pathname, current.pathname);
-      }, 700);
-      setTimeout(() => {
-        this.props.transitionActions.startTransition('reset');
-      }, 800);
+    // 400ms duration for current panel to close
+    else {
+      const newLocation = location.pathname;
+      loadContent(newLocation, true);
+      startTransition('start');
+      const timer = setTimeout(() => {
+        loadContent(current, false);
+        startTransition('end');
+        setCurrent(newLocation);
+        const timerTwo = setTimeout(() => {
+          startTransition('reset');
+        }, 600);
+        return () => clearTimeout(timerTwo);
+      }, 600);
+      return () => clearTimeout(timer);
     }
-  }
-  render() {
+  }, [location.pathname, loadContent, startTransition])
 
-    return (
-      <SiteRoutes/>
-    );
-  }
-}
-export default connect(
-  () => ({
-  }),
-  dispatch => ({
-    transitionActions: bindActionCreators(transitionActions, dispatch),
-  }),
-)(SiteRouteswrapper);
+
+  return (
+    <SiteRoutes/>
+  );
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loadContent: (page, bool) => {
+      dispatch(transitionActions.loadContent(page, bool));
+    },
+    startTransition: (status) => {
+      dispatch(transitionActions.startTransition(status));
+    }
+  };
+};
+
+export default connect (null, mapDispatchToProps)(SiteRoutesContainer);

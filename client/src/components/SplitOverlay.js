@@ -41,12 +41,12 @@ const StyledColumn = styled.div`
   display: flex;
   flex-wrap: wrap;
   background-color: rgba(0,0,0,.95);
-  transition-duration: .3s;
+  transition-duration: .4s;
   transition-timing-function: ease-out;
   top: -100vh;
   transform: translateY(0px);
   animation-fill-mode: both;
-  animation-duration: .6s;
+  animation-duration: .4s;
   animation-name: ${props => props.displayed && verticalShow};
   animation-name: ${props => props.hidden && verticalHide};
   animation-delay: ${props => props.delay};
