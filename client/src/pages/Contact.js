@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import { connect } from 'react-redux';
 import * as contactActions from 'actions/contact';
-import Scrollbar from 'smooth-scrollbar';
 import ContactForm from 'components/forms/ContactForm';
 import styled from 'styled-components';
 import {pageData} from 'data/pageData';
@@ -16,13 +15,14 @@ const StyledWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100vw;
-  height: calc(100vh - 75px);
+  height: calc(100% - 75px);
   position: fixed;
   margin-top: 75px;
   color: var(--gold-color);
   font-size: 24px;
   letter-spacing: 1px;
   font-weight: 600;
+  overflow-y: auto;
 `;
 const StyledContainer = styled.div`
   padding: 24px 0px;
@@ -80,15 +80,8 @@ const StyledNotice = styled.div`
 `;
 
 const Contact = ({transitionInProgress, contactSending, postContact}) => {
-  useEffect(() => {
-    Scrollbar.init(document.querySelector('#scroll_contact'), {
-      alwaysShowTracks: true,
-      syncCallbacks: true,
-    });
-  });
   return(
     <StyledWrapper
-      id="scroll_contact"
       transitionInProgress={transitionInProgress}
     >
       <StyledContainer>

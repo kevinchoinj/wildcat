@@ -1,5 +1,4 @@
 import pages from 'reducers/pages';
-import scroll from 'reducers/scroll';
 import { reducer as reducerForm } from 'redux-form';
 import images from 'reducers/images';
 import transition from 'reducers/transition';
@@ -11,7 +10,6 @@ import {pageData} from 'data/pageData';
 
 const reducers={
   pages,
-  scroll,
   form: reducerForm,
   images,
   transition,

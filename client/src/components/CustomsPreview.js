@@ -7,7 +7,7 @@ import {
 } from 'reducers';
 
 const StyledWrapper = styled.div`
-  height: calc(100vh - 75px);
+  height: calc(100% - 75px);
   width: 33.33333333333vw;
   position: fixed;
   top: 75px;

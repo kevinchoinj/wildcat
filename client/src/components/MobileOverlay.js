@@ -8,7 +8,7 @@ import {
 const StyledOverlay = styled.div`
   display: none;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   overflow: hidden;
   position: fixed;
   top: 0px;

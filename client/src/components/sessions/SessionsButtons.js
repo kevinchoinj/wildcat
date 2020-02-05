@@ -35,7 +35,7 @@ const StyledWrapper = styled.div`
   z-index: 5;
   transition: .4s ease-out;
   display: flex;
-  opacity: ${props => props.transitionInProgress ? 0 : 1}
+  opacity: ${props => props.transitionInProgress ? 0 : 1};
   @media screen and (max-width: 992px) {
     display: none;
   }

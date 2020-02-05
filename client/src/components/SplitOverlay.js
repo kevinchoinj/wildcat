@@ -12,12 +12,12 @@ const verticalShow = keyframes`
     transform: translateY(0vh);
   }
   100% {
-    transform: translateY(100vh);
+    transform: translateY(100%);
   }
 `;
 const verticalHide = keyframes`
   0% {
-    transform: translateY(100vh);
+    transform: translateY(100%);
   }
   100% {
     transform: translateY(200vh);
@@ -25,7 +25,7 @@ const verticalHide = keyframes`
 `;
 const StyledWrapper = styled.div`
   margin-top: 75px;
-  height: calc(100vh - 75px);
+  height: calc(100% - 75px);
   width: 100vw;
   pointer-events: none;
   display: flex;
@@ -35,7 +35,7 @@ const StyledWrapper = styled.div`
 `;
 const StyledColumn = styled.div`
   width: 33.33333333333%;
-  height: 100vh;
+  height: 100%;
   overflow: hidden;
   position: relative;
   display: flex;
@@ -43,7 +43,7 @@ const StyledColumn = styled.div`
   background-color: rgba(0,0,0,.95);
   transition-duration: .4s;
   transition-timing-function: ease-out;
-  top: -100vh;
+  top: -100%;
   transform: translateY(0px);
   animation-fill-mode: both;
   animation-duration: .4s;

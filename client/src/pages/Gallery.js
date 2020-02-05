@@ -12,7 +12,7 @@ const StyledWrapper = styled.div`
   top: 0px;
   margin-top: 75px;
   width: 100vw;
-  height: calc(100vh - 75px);
+  height: calc(100% - 75px);
   transition: .4s ease-out;
 `;
 

@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react';
 import { connect } from 'react-redux';
-import Scrollbar from 'smooth-scrollbar';
 import styled from 'styled-components';
 import {
   selectTransitionInProgress,
@@ -9,20 +8,17 @@ import {
 const StyledWrapper = styled.div`
   margin-top: 75px;
   width: 100vw;
-  height: calc(100vh - 75px);
+  height: calc(100% - 75px);
   transition: .4s ease;
   color: #fff;
   position: fixed !important;
   top: 0px;
-  pointer-events: none;
-  opacity: ${props => props.transitionInProgress ? 0 : 1}
-  .scrollbar-track.scrollbar-track-y.show {
-    pointer-events: auto;
-  }
+  opacity: ${props => props.transitionInProgress ? 0 : 1};
+  overflow-y: auto;
   @media screen and (max-width: 992px) {
     transition: .2s ease;
-    margin-top: 150px;
-    height: calc(100vh - 150px);
+    margin-top: 112.5px;
+    height: calc(100% - 112.5px);
   }
 `;
 const StyledTitleWrapper = styled.div`
@@ -70,16 +66,9 @@ const StyledBody = styled.div`
   }
 `;
 const SessionsTextWrapper = ({transitionInProgress, title, children}) => {
-  useEffect(() => {
-    Scrollbar.init(document.querySelector('#scroll_sessions'), {
-      alwaysShowTracks: true,
-      syncCallbacks: true,
-    });
-  }, []);
   return (
     <StyledWrapper
       transitionInProgress={transitionInProgress}
-      id="scroll_sessions"
     >
       <StyledTitleWrapper>
         <StyledTitle>

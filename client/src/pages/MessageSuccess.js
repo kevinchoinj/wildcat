@@ -1,6 +1,5 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import Scrollbar from 'smooth-scrollbar';
 import styled from 'styled-components';
 import {
   selectTransitionInProgress,
@@ -12,7 +11,7 @@ const StyledWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100vw;
-  height: calc(100vh - 75px);
+  height: calc(100% - 75px);
   position: fixed;
   margin-top: 75px;
   color: var(--gold-color);
@@ -57,15 +56,8 @@ const StyledMessage = styled.div`
 `;
 
 const MessageFailure = ({transitionInProgress}) => {
-  useEffect(() => {
-    Scrollbar.init(document.querySelector('#scroll_success'), {
-      alwaysShowTracks: true,
-      syncCallbacks: true,
-    });
-  });
   return(
     <StyledWrapper
-      id="scroll_success"
       transitionInProgress={transitionInProgress}
     >
       <StyledContainer>

@@ -72,7 +72,11 @@ const SiteRoutes = ({loadedContent}) => {
         <MessageSuccess/>:null}
       {loadedContent[pageData.messageFailure]?
         <MessageFailure/>:null}
-      <SessionsMobileNav/>
+
+      {loadedContent[pageData.sessionsOneLink] ||
+        loadedContent[pageData.sessionsTwoLink] ||
+        loadedContent[pageData.sessionsThreeLink] ?
+        <SessionsMobileNav />:null}
       <HomeOverlay/>
     </div>
   );

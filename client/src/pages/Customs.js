@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import { connect } from 'react-redux';
 import CustomObject from 'components/CustomObject';
-import Scrollbar from 'smooth-scrollbar';
 import {displayValues} from 'data/displayValues';
 import styled from 'styled-components';
 import {
@@ -26,7 +25,7 @@ const StyledWrapper = styled.div`
   left: 0;
 `;
 const StyledContainer = styled.div`
-  height: calc(100vh - 75px);
+  height: calc(100% - 75px);
   width: 100%;
   padding-left: 33.3333333333%;
   display: flex;
@@ -48,15 +47,8 @@ const StyledObject = styled.div`
 `;
 
 const Customs = ({transitionInProgress}) => {
-  useEffect(() => {
-    Scrollbar.init(document.querySelector('#scroll_customs'), {
-      alwaysShowTracks: true,
-      syncCallbacks: true,
-    });
-  });
   return(
     <StyledWrapper
-      id="scroll_customs"
       transitionInProgress={transitionInProgress}
     >
       <StyledContainer>

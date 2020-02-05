@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react';
 import { connect } from 'react-redux';
-import Scrollbar from 'smooth-scrollbar';
 import styled from 'styled-components';
 import {
   selectTransitionInProgress,
@@ -12,7 +11,7 @@ const StyledWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100vw;
-  height: calc(100vh - 75px);
+  height: calc(100% - 75px);
   position: fixed;
   margin-top: 75px;
   color: var(--gold-color);
@@ -20,6 +19,7 @@ const StyledWrapper = styled.div`
   letter-spacing: 1px;
   font-weight: 600;
   overflow-wrap: break-word;
+  overflow-y: auto;
 `;
 const StyledContainer = styled.div`
   padding: 24px 0px;
@@ -96,12 +96,6 @@ const StyledBody = styled.div`
 `;
 
 const Links = ({transitionInProgress}) => {
-  useEffect(() => {
-    Scrollbar.init(document.querySelector('#scroll_links'), {
-      alwaysShowTracks: true,
-      syncCallbacks: true,
-    });
-  }, []);
   const linkValues = [
     {title: 'I love tributes and my PayPal email is ashleywildcat@outlook.com', link: 'http://paypal.me/ashleywildcat'},
     {title: 'Clips Store', link: 'https://www.clips4sale.com/studio/84041/ashley-wildcat-productions'},
@@ -115,7 +109,6 @@ const Links = ({transitionInProgress}) => {
   ];
   return(
     <StyledWrapper
-      id="scroll_links"
       transitionInProgress={transitionInProgress}
     >
       <StyledContainer>
