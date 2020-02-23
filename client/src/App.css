@@ -38,6 +38,17 @@ body * {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+.react-images__positioner {
+  align-items: flex-end !important;
+}
+.react-images__dialog {
+  height: calc(100vh - 75px);
+}
+.react-images__dialog img {
+  max-height: 80%;
+  max-width: 80%;
+  object-fit: contain;
+}
 /*======================================
 =           CONTACT FORM              =
 ======================================*/

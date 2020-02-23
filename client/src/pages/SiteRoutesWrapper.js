@@ -27,6 +27,7 @@ const SiteRoutesContainer = ({location, startTransition, loadContent}) => {
     else {
       const newLocation = location.pathname;
       loadContent(newLocation, true);
+      loadContent(current, 'leaving');
       startTransition('start');
       const timer = setTimeout(() => {
         loadContent(current, false);
@@ -34,7 +35,7 @@ const SiteRoutesContainer = ({location, startTransition, loadContent}) => {
         setCurrent(newLocation);
         const timerTwo = setTimeout(() => {
           startTransition('reset');
-        }, 600);
+        }, 599);
         return () => clearTimeout(timerTwo);
       }, 600);
       return () => clearTimeout(timer);

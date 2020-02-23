@@ -88,6 +88,7 @@ const Viewer = ({images}) => {
         {lightboxOpen ? (
           <Modal onClose={closeLightbox}>
             <Carousel
+              onClick={() => console.log('asdf')}
               currentIndex={currentImage}
               views={images}
             />
