@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import * as contactActions from 'actions/contact';
 import ContactForm from 'components/forms/ContactForm';

@@ -28,8 +28,8 @@ const LinkObject = ({children, to, className}) => {
     <Link to={to} className={className}>
       {children}
     </Link>
-  )
-}
+  );
+};
 
 const StyledLink = styled(LinkObject)`
   background-color: ${props => props.active && 'var(--gold-color)'};

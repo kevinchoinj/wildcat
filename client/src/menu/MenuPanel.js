@@ -130,17 +130,19 @@ const MenuPanel = ({closeMenu, menuDisplay, loadedContent}) => {
   const emailUrl = 'mailto:' + pageData.emailAddress;
 
   const homeSelected = (loadedContent[pageData.homeLink]);
+  /*
   const sessionsSelected = (
     loadedContent[pageData.sessionsOneLink] ||
     loadedContent[pageData.sessionsTwoLink] ||
     loadedContent[pageData.sessionsThreeLink]
   );
+  */
   const gallerySelected  = (loadedContent[pageData.galleryLink]);
   const linksSelected  = (loadedContent[pageData.linksLink]);
   const contactSelected  = (loadedContent[pageData.contactLink]);
   const menuValues = [
     {text: 'HOME', link: pageData.homeLink, selected: homeSelected},
-    {text: 'SESSIONS', link: pageData.sessionsOneLink, selected: sessionsSelected},
+    // {text: 'SESSIONS', link: pageData.sessionsOneLink, selected: sessionsSelected},
     {text: 'GALLERY', link: pageData.galleryLink, selected: gallerySelected},
     {text: 'LINKS', link: pageData.linksLink, selected: linksSelected},
     {text: 'CONTACT', link: pageData.contactLink, selected: contactSelected},
