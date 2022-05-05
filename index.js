@@ -25,8 +25,6 @@ const createTransporter = async () => {
     refresh_token: json.refreshToken,
   });
 
-  console.log(json.clientId, json.clientSecret, json.refreshToken);
-
   const accessToken = await new Promise((resolve, reject) => {
     oauth2Client.getAccessToken((err, token) => {
       if (err) {
@@ -63,17 +61,6 @@ const sendEmail = async (emailOptions, cb) => {
 /*======================================
 =             NODEMAILER              =
 ======================================*/
-var smtpTransport = nodemailer.createTransport({
-    service: 'gmail',
-    host: 'smtp.gmail.com',
-    port: 465,
-    auth: {
-        user: json.emailSender,
-        pass: json.password
-    },
-    tls: {rejectUnauthorized: false},
-    debug:true
-});
 
 app.post('/api/v1/contact', (req, res)=>{
   var mailOptions={
