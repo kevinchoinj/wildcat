@@ -40,7 +40,7 @@ const SiteRoutesContainer = ({location, startTransition, loadContent}) => {
       }, 600);
       return () => clearTimeout(timer);
     }
-  }, [location.pathname, loadContent, startTransition])
+  }, [location.pathname, loadContent, startTransition]);
 
 
   return (
